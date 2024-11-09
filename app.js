@@ -1,8 +1,7 @@
 const board = document.getElementById('board');
 const squares = document.getElementsByClassName('square');
-const players = ['X', 'Y'];
+const players = ['X', 'O'];
 let currentPlayer = players[0];
-const boardArray = Array(squares.length);
 
 const winningCombinations = [
     [0,1,2],
@@ -15,22 +14,21 @@ const winningCombinations = [
     [2,4,6]
 ];
 
-boardArray.fill(null);
 
+  //Show the End Trun message
+  const endMessage = document.createElement('h2')
+  endMessage.textContent = `X's turn!`
+  endMessage.style.marginTop = '30px'
+  endMessage.style.textAlign='center'
+  board.after(endMessage)
 
-//Click a DIV
-const onClick = function() {
-    console.log(this.id, this.innerHTML);
-    return this.id;
-  }
-
-  document.getElementById('square0').onclick = onClick;
-  document.getElementById('square1').onclick = onClick;
-  document.getElementById('square2').onclick = onClick;
-  document.getElementById('square3').onclick = onClick;
-  document.getElementById('square4').onclick = onClick;
-  document.getElementById('square5').onclick = onClick;
-  document.getElementById('square6').onclick = onClick;
-  document.getElementById('square7').onclick = onClick;
-  document.getElementById('square8').onclick = onClick;
-
+  //Check for Win
+  function checkWin(currentPlayer) {
+    for(let i = 0; i < winningCombinations; i++){
+        const [a, b, c] = winningCombinations[i]
+        if(squares[a].textContent === currentPlayer && squares[b].textContent === currentPlayer && squares[c].textContent === currentPlayer){
+            return true
+        }
+    }
+    return false
+}
