@@ -21,7 +21,9 @@ boardArray.fill(null);
 //Click a DIV
 const onClick = function() {
     console.log(this.id, this.innerHTML);
+    return this.id;
   }
+
   document.getElementById('square0').onclick = onClick;
   document.getElementById('square1').onclick = onClick;
   document.getElementById('square2').onclick = onClick;
@@ -31,3 +33,4 @@ const onClick = function() {
   document.getElementById('square6').onclick = onClick;
   document.getElementById('square7').onclick = onClick;
   document.getElementById('square8').onclick = onClick;
+
